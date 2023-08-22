@@ -10,4 +10,9 @@ export class CatsController {
   getCats(): string {
     return this.appService.getCats();
   }
+
+  @Get('hello')
+  getHello(): string {
+    return 'Hello Cats!';
+  }
 }
