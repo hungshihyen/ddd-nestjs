@@ -8,9 +8,9 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { AppService } from '../app.service';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './cat-update-dto';
+import { CatService } from './cat.service';
 
 class ListAllEntities {
   limit: number;
@@ -18,12 +18,12 @@ class ListAllEntities {
 
 // command: "nest g controller cats" to create a controller
 @Controller('cats')
-export class CatsController {
-  constructor(private readonly appService: AppService) {}
+export class CatController {
+  constructor(private readonly service: CatService) {}
 
   @Post()
-  create(@Body() createCatDto: CreateCatDto) {
-    return `This action adds a new cat ${createCatDto.name} ${createCatDto.age} ${createCatDto.breed}`;
+  create(@Body() createCatDto: CreateCatDto): void {
+    this.service.create(CreateCatDto.toEntity(createCatDto));
   }
 
   @Get()
