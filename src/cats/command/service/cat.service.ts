@@ -12,6 +12,10 @@ export class CatService {
   ) {}
 
   create(cat: Cat) {
-    return this.catRepository.create(cat);
+    this.catRepository.create(cat);
+  }
+
+  update(id: string, cat: Cat): void {
+    this.catRepository.update(cat);
   }
 }

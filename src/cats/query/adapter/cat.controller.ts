@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Put,
-  Query,
-} from '@nestjs/common';
-import { UpdateCatDto } from '../../command/adapter/cat-update-dto';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { CatService } from '../../command/service/cat.service';
 
 class ListAllEntities {
@@ -27,15 +18,5 @@ export class CatController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return `This action returns a #${id} cat`;
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat with name ${updateCatDto.name}, age ${updateCatDto.age}, breed ${updateCatDto.breed}`;
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return `This action removes a #${id} cat`;
   }
 }

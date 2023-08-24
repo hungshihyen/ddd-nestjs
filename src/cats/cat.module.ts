@@ -1,7 +1,7 @@
 import { Module, Provider } from '@nestjs/common';
 import { CatRepositoryImpl } from './command/adapter/cat.repository';
 import { CatController as GetCatController } from './query/adapter/cat.controller';
-import { CatController as CreateCatController } from './command/adapter/create.cat.controller';
+import { CatController as CreateCatController } from './command/adapter/cat.controller';
 import { CAT_REPOSITORY, CatService } from './command/service/cat.service';
 
 const controllers = [GetCatController, CreateCatController];
