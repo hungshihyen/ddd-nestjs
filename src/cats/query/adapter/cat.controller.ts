@@ -19,11 +19,6 @@ class ListAllEntities {
 export class CatController {
   constructor(private readonly service: CatService) {}
 
-  // @Post()
-  // create(@Body() createCatDto: CreateCatDto): void {
-  //   this.service.create(CreateCatDto.toEntity(createCatDto));
-  // }
-
   @Get()
   findAll(@Query() query: ListAllEntities) {
     return `This action returns all cats (limit: ${query.limit} items)`;
