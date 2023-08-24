@@ -1,4 +1,4 @@
-import { Cat } from './cat.entity';
+import { Cat } from '../service/cat.entity';
 
 export class CreateCatDto {
   readonly name: string;

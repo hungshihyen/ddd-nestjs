@@ -1,9 +1,6 @@
-import { Cat } from './cat.entity';
+import { Cat } from '../service/cat.entity';
 import { Injectable } from '@nestjs/common';
-
-export interface CatRepository {
-  create(cat: Cat): void;
-}
+import { CatRepository } from '../service/cat.repository';
 
 @Injectable()
 export class CatRepositoryImpl implements CatRepository {

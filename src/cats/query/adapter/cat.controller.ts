@@ -4,13 +4,11 @@ import {
   Delete,
   Get,
   Param,
-  Post,
   Put,
   Query,
 } from '@nestjs/common';
-import { CreateCatDto } from './create-cat.dto';
-import { UpdateCatDto } from './cat-update-dto';
-import { CatService } from './cat.service';
+import { UpdateCatDto } from '../../command/adapter/cat-update-dto';
+import { CatService } from '../../command/service/cat.service';
 
 class ListAllEntities {
   limit: number;
@@ -21,10 +19,10 @@ class ListAllEntities {
 export class CatController {
   constructor(private readonly service: CatService) {}
 
-  @Post()
-  create(@Body() createCatDto: CreateCatDto): void {
-    this.service.create(CreateCatDto.toEntity(createCatDto));
-  }
+  // @Post()
+  // create(@Body() createCatDto: CreateCatDto): void {
+  //   this.service.create(CreateCatDto.toEntity(createCatDto));
+  // }
 
   @Get()
   findAll(@Query() query: ListAllEntities) {
