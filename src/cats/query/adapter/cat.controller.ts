@@ -1,5 +1,4 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { CatService } from '../../command/service/cat.service';
 
 class ListAllEntities {
   limit: number;
@@ -8,7 +7,7 @@ class ListAllEntities {
 // command: "nest g controller cats" to create a controller
 @Controller('cat')
 export class CatController {
-  constructor(private readonly service: CatService) {}
+  constructor() {}
 
   @Get()
   findAll(@Query() query: ListAllEntities) {

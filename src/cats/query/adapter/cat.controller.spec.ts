@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 
-describe('CatsController', () => {
+describe('CatController', () => {
   let controller: CatController;
 
   beforeEach(async () => {
