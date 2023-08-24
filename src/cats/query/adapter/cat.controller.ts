@@ -6,7 +6,7 @@ class ListAllEntities {
 }
 
 // command: "nest g controller cats" to create a controller
-@Controller('cats')
+@Controller('cat')
 export class CatController {
   constructor(private readonly service: CatService) {}
 
