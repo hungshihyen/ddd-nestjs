@@ -16,6 +16,6 @@ export class CatService {
   }
 
   update(id: string, cat: Cat): void {
-    this.catRepository.update(cat);
+    this.catRepository.update(id, cat);
   }
 }

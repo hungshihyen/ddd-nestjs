@@ -9,7 +9,7 @@ export class CatRepositoryImpl implements CatRepository {
     console.log('CatRepositoryImpl.create', cat);
   }
 
-  update(cat: Cat): void {
-    console.log('CatRepositoryImpl.update', cat);
+  update(id: string, cat: Cat): void {
+    console.log('CatRepositoryImpl.update', id, cat);
   }
 }
