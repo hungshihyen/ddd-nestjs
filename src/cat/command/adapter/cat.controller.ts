@@ -9,7 +9,7 @@ export class CatController {
 
   @Post()
   create(@Body() createCatDto: CreateCatDto): void {
-    this.service.create(CreateCatDto.toEntity(createCatDto));
+    this.service.create(createCatDto);
   }
 
   @Put(':id')

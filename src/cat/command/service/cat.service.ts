@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Cat } from './cat.entity';
-
 import { CatRepository } from './cat.repository';
+import { CreateCatDto } from '../adapter/create-cat.dto';
 
 export const CAT_REPOSITORY = 'CAT_REPOSITORY';
 
@@ -11,8 +11,8 @@ export class CatService {
     @Inject(CAT_REPOSITORY) private readonly catRepository: CatRepository,
   ) {}
 
-  create(cat: Cat) {
-    this.catRepository.create(cat);
+  create(cat: CreateCatDto) {
+    this.catRepository.create(CreateCatDto.toEntity(cat));
   }
 
   update(id: string, cat: Cat): void {
