@@ -9,7 +9,7 @@ class ListAllEntities {
 export class CatController {
   constructor() {}
 
-  @Get()
+  @Get('all')
   findAll(@Query() query: ListAllEntities) {
     return `This action returns all cats (limit: ${query.limit} items)`;
   }

@@ -5,6 +5,8 @@ import { CreateCatDto } from '../adapter/create-cat.dto';
 
 export const CAT_REPOSITORY = 'CAT_REPOSITORY';
 
+// command: "nest g service cat" to create a service
+
 @Injectable()
 export class CatService {
   constructor(
