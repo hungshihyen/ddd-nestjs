@@ -4,7 +4,7 @@ class ListAllEntities {
   limit: number;
 }
 
-// command: "nest g controller cats" to create a controller
+// command: "nest g controller cat" to create a controller
 @Controller('cat')
 export class CatController {
   constructor() {}
