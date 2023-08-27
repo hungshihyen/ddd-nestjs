@@ -17,7 +17,7 @@ export class CatService {
     this.catRepository.create(CreateCatDto.toEntity(cat));
   }
 
-  update(id: string, cat: Cat): void {
-    this.catRepository.update(id, cat);
+  update(index: number, cat: Cat): void {
+    this.catRepository.update(index, cat);
   }
 }

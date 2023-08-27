@@ -12,6 +12,14 @@ class CatMapper {
   getCat(): Cat[] {
     return this.cat;
   }
+
+  updateCat(index: number, cat: Cat) {
+    this.cat[index] = cat;
+  }
+
+  restore() {
+    this.cat = [];
+  }
 }
 
 export default (() => {

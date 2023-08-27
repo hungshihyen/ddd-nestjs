@@ -13,7 +13,7 @@ export class CatController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+  update(@Param('id') id: number, @Body() updateCatDto: UpdateCatDto) {
     this.service.update(id, updateCatDto);
   }
 
