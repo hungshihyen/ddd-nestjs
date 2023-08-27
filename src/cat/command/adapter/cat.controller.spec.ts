@@ -23,7 +23,6 @@ describe('CatController', () => {
 
     controller.create(cat);
 
-    expect(CatMapper.getCat().length).toBe(1);
     expect(CatMapper.getCat()).toEqual([cat]);
   });
 });

@@ -1,6 +1,6 @@
 import { Cat } from './command/service/cat.entity';
 
-let instance;
+let instance: CatMapper;
 
 class CatMapper {
   cat: Cat[] = [];
