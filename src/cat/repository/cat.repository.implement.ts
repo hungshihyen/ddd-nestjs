@@ -1,7 +1,7 @@
-import { Cat } from './cat.entity';
+import { Cat } from '../entity/cat.entity';
 import { Injectable } from '@nestjs/common';
 import { CatRepository } from './cat.repository';
-import CatMapper from './cat.mapper';
+import CatMapper from '../cat.mapper';
 
 @Injectable()
 export class CatRepositoryImpl implements CatRepository {

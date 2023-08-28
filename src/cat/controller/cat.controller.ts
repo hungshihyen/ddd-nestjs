@@ -8,9 +8,9 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { CatService } from './cat.service';
-import { CreateCatDto } from './create-cat.dto';
-import { UpdateCatDto } from './cat-update-dto';
+import { CatService } from '../service/cat.service';
+import { CreateCatDto } from '../dto/create-cat.dto';
+import { UpdateCatDto } from '../dto/cat-update-dto';
 
 class ListAllEntities {
   limit: number;

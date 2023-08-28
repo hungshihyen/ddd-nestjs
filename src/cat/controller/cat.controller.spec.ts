@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
-import CatMapper from './cat.mapper';
-import { CatModule } from './cat.module';
-import { Cat } from './cat.entity';
+import CatMapper from '../cat.mapper';
+import { CatModule } from '../cat.module';
+import { Cat } from '../entity/cat.entity';
 import { CatController } from './cat.controller';
 
 describe('CatController', () => {

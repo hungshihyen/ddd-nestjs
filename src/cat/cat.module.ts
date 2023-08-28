@@ -1,7 +1,7 @@
 import { Module, Provider } from '@nestjs/common';
-import { CatRepositoryImpl } from './cat.repository.implement';
-import { CatController } from './cat.controller';
-import { CatService } from './cat.service';
+import { CatRepositoryImpl } from './repository/cat.repository.implement';
+import { CatController } from './controller/cat.controller';
+import { CatService } from './service/cat.service';
 import { CAT_REPOSITORY } from './cat.di-tokens';
 
 const controllers = [CatController];
