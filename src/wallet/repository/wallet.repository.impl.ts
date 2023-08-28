@@ -1,6 +1,6 @@
 import { WalletRepository } from './wallet.repository';
-import WalletMapper from './wallet.mapper';
-import walletMapper from './wallet.mapper';
+import WalletMapper from '../wallet.mapper';
+import walletMapper from '../wallet.mapper';
 
 import { WalletDbDto } from '../dto/dto';
 import { WalletEntity } from '../entity/entity';

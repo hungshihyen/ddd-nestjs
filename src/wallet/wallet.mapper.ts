@@ -1,4 +1,4 @@
-import { WalletDbDto } from '../dto/dto';
+import { WalletDbDto } from './dto/dto';
 
 class WalletMapper {
   wallet = {};
