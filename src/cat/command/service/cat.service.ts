@@ -3,16 +3,13 @@ import { CatRepository } from './cat.repository';
 import { CreateCatDto } from '../adapter/create-cat.dto';
 import { UpdateCatDto } from '../adapter/cat-update-dto';
 import { Cat } from './cat.entity';
-
-export const CAT_REPOSITORY = 'CAT_REPOSITORY';
+import { CAT_REPOSITORY } from '../../cat.di-tokens';
 
 // command: "nest g service cat" to create a service
 
 @Injectable()
 export class CatService {
-  constructor(
-    @Inject(CAT_REPOSITORY) private readonly catRepository: CatRepository,
-  ) {}
+  constructor(@Inject(CAT_REPOSITORY) private catRepository: CatRepository) {}
 
   create(cat: CreateCatDto): void {
     this.catRepository.create(CreateCatDto.toEntity(cat));
