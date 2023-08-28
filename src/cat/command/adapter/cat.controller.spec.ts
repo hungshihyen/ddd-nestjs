@@ -41,7 +41,7 @@ describe('CatController', () => {
     expect(CatMapper.getCat()[0]).toEqual(updatedCatDto);
   });
 
-  it('should update cat fail when not get cat', () => {
+  it('should update cat fail when cat not found', () => {
     const updatedCatDto = { name: 'test', age: 3, breed: '22' };
 
     expect(() => controller.update(0, updatedCatDto)).toThrow('CAT_NOT_FOUND');
