@@ -20,4 +20,8 @@ export class CatService {
   update(index: number, cat: Cat): void {
     this.catRepository.update(index, cat);
   }
+
+  remove(index: number) {
+    this.catRepository.remove(index);
+  }
 }

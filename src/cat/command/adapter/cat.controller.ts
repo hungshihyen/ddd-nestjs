@@ -12,13 +12,13 @@ export class CatController {
     this.service.create(createCatDto);
   }
 
-  @Put(':id')
-  update(@Param('id') id: number, @Body() updateCatDto: UpdateCatDto) {
+  @Put(':index')
+  update(@Param('index') id: number, @Body() updateCatDto: UpdateCatDto) {
     this.service.update(id, updateCatDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return `This action removes a #${id} cat`;
+  @Delete(':index')
+  remove(@Param('index') id: number) {
+    this.service.remove(id);
   }
 }

@@ -40,4 +40,12 @@ describe('CatController', () => {
 
     expect(CatMapper.getCat()[0]).toEqual(updatedCatDto);
   });
+
+  it('should delete cat successfully', () => {
+    controller.create({ name: 'test1', age: 1, breed: '1' });
+
+    controller.remove(0);
+
+    expect(CatMapper.getCat()).toEqual([]);
+  });
 });

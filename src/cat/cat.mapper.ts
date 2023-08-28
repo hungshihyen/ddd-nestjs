@@ -17,6 +17,10 @@ class CatMapper {
     this.cat[index] = cat;
   }
 
+  removeCat(index: number) {
+    this.cat.splice(index, 1);
+  }
+
   restore() {
     this.cat = [];
   }

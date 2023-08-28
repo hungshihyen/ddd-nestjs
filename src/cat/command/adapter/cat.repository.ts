@@ -12,4 +12,8 @@ export class CatRepositoryImpl implements CatRepository {
   update(index: number, cat: Cat): void {
     CatMapper.updateCat(index, cat);
   }
+
+  remove(index: number): void {
+    CatMapper.removeCat(index);
+  }
 }
