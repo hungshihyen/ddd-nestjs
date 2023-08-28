@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CatRepository } from './cat.repository';
 import { CreateCatDto } from '../adapter/create-cat.dto';
 import { UpdateCatDto } from '../adapter/cat-update-dto';
+import { Cat } from './cat.entity';
 
 export const CAT_REPOSITORY = 'CAT_REPOSITORY';
 
@@ -18,7 +19,12 @@ export class CatService {
   }
 
   update(index: number, updateCatDto: UpdateCatDto): void {
-    const cat = this.catRepository.get(index);
+    let cat: Cat;
+    try {
+      cat = this.catRepository.get(index);
+    } catch (e) {
+      throw new Error(e);
+    }
 
     cat.rename(updateCatDto.name);
     cat.updateAge(updateCatDto.age);

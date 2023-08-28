@@ -18,6 +18,9 @@ export class CatRepositoryImpl implements CatRepository {
   }
 
   get(index: number): Cat {
+    if (CatMapper.getCat()[index] === undefined) {
+      throw new Error('CAT_NOT_FOUND');
+    }
     return CatMapper.getCat()[index];
   }
 }
