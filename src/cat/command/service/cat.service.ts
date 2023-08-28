@@ -25,7 +25,6 @@ export class CatService {
     } catch (e) {
       throw new Error(e);
     }
-
     cat.rename(updateCatDto.name);
     cat.updateAge(updateCatDto.age);
     cat.updateBreed(updateCatDto.breed);

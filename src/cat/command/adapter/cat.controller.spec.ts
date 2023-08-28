@@ -2,6 +2,7 @@ import { Test } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import CatMapper from '../../cat.mapper';
 import { CatModule } from '../../cat.module';
+import { Cat } from '../service/cat.entity';
 
 describe('CatController', () => {
   let controller: CatController;
@@ -31,8 +32,10 @@ describe('CatController', () => {
   });
 
   it('should update cat successfully', () => {
-    controller.create({ name: 'test1', age: 1, breed: '1' });
-    controller.create({ name: 'test2', age: 3, breed: '2' });
+    const cat1 = new Cat('test1', 1, 'test');
+    const cat2 = new Cat('test2', 2, 'test');
+    CatMapper.setCat(cat1);
+    CatMapper.setCat(cat2);
 
     const updatedCatDto = { name: 'test', age: 3, breed: '22' };
 
