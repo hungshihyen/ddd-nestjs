@@ -23,12 +23,13 @@ describe('CatController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should set cat successfully', () => {
-    const cat = { name: 'test', age: 1, breed: 'test' };
+  it('should create cat successfully', () => {
+    controller.create({ name: 'test', age: 1, breed: 'test' });
 
-    controller.create(cat);
-
-    expect(CatMapper.getCat()).toEqual([cat]);
+    const cat = CatMapper.getCat()[0];
+    expect(cat.name).toBe('test');
+    expect(cat.age).toBe(1);
+    expect(cat.breed).toBe('test');
   });
 
   it('should update cat successfully', () => {

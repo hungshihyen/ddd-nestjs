@@ -1,23 +1,37 @@
 export class Cat {
-  name: string;
-  age: number;
-  breed: string;
-
   constructor(name: string, age: number, breed: string) {
-    this.name = name;
-    this.age = age;
-    this.breed = breed;
+    this._name = name;
+    this._age = age;
+    this._breed = breed;
+  }
+
+  private _age: number;
+
+  get age(): number {
+    return this._age;
+  }
+
+  private _name: string;
+
+  get name(): string {
+    return this._name;
+  }
+
+  private _breed: string;
+
+  get breed(): string {
+    return this._breed;
   }
 
   rename(name: string) {
-    this.name = name;
+    this._name = name;
   }
 
   updateAge(age: number) {
-    this.age = age;
+    this._age = age;
   }
 
   updateBreed(breed: string) {
-    this.breed = breed;
+    this._breed = breed;
   }
 }
