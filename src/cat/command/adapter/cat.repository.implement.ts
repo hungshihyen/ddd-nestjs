@@ -1,4 +1,4 @@
-import { Cat } from '../service/cat.entity';
+import { Cat } from '../../entity/cat.entity';
 import { Injectable } from '@nestjs/common';
 import { CatRepository } from '../service/cat.repository';
 import CatMapper from '../../cat.mapper';

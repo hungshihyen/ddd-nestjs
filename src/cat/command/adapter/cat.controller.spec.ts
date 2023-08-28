@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { CatController } from './cat.controller';
 import CatMapper from '../../cat.mapper';
 import { CatModule } from '../../cat.module';
-import { Cat } from '../service/cat.entity';
+import { Cat } from '../../entity/cat.entity';
 
 describe('CatController', () => {
   let controller: CatController;

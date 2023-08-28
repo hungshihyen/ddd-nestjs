@@ -1,4 +1,4 @@
-import { Cat } from './cat.entity';
+import { Cat } from '../../entity/cat.entity';
 
 export interface CatRepository {
   create(cat: Cat): void;

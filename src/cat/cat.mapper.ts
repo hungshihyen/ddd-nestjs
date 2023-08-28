@@ -1,4 +1,4 @@
-import { Cat } from './command/service/cat.entity';
+import { Cat } from './entity/cat.entity';
 
 let instance: CatMapper;
 
