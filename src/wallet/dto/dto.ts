@@ -37,4 +37,8 @@ export class WalletResponse {
     this.id = id;
     this.balance = balance;
   }
+
+  static from(wallet: WalletEntity) {
+    return new WalletResponse(wallet.id, wallet.balance);
+  }
 }

@@ -15,7 +15,7 @@ export class WalletService {
 
   get(id: number): WalletResponse {
     const wallet = this.repository.get(id);
-    return wallet.toResponse();
+    return WalletResponse.from(wallet);
   }
 
   withdraw(id: number, amount: number) {
