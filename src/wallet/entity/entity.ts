@@ -1,4 +1,4 @@
-import { SaveWalletRequest, WalletResponse } from '../dto/dto';
+import { WalletResponse } from '../dto/dto';
 
 export class WalletEntity {
   id: number;
@@ -7,10 +7,6 @@ export class WalletEntity {
   constructor(id: number, balance: number) {
     this.id = id;
     this.balance = balance;
-  }
-
-  static from(request: SaveWalletRequest) {
-    return new WalletEntity(request.id, request.balance);
   }
 
   toResponse() {

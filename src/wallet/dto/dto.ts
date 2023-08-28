@@ -3,14 +3,13 @@ import { WalletEntity } from '../entity/entity';
 export class SaveWalletRequest {
   id: number;
   balance: number;
+
+  static toEntity(request: SaveWalletRequest) {
+    return new WalletEntity(request.id, request.balance);
+  }
 }
 
 export type WithdrawRequest = { amount: number; id: number };
-
-export interface WalletDto {
-  id: number;
-  balance: number;
-}
 
 export class WalletDbDto {
   id: number;

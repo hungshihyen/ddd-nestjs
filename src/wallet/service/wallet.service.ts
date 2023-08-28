@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@nestjs/common';
 import { WALLET_REPOSITORY } from '../wallet.di-tokens';
 import { WalletRepository } from '../repository/wallet.repository';
 import { SaveWalletRequest, WalletResponse } from '../dto/dto';
-import { WalletEntity } from '../entity/entity';
 
 @Injectable()
 export class WalletService {
@@ -11,7 +10,7 @@ export class WalletService {
   ) {}
 
   save(request: SaveWalletRequest) {
-    this.repository.save(WalletEntity.from(request));
+    this.repository.save(SaveWalletRequest.toEntity(request));
   }
 
   get(id: number): WalletResponse {
