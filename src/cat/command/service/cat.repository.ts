@@ -6,4 +6,6 @@ export interface CatRepository {
   update(index: number, cat: Cat): void;
 
   remove(index: number): void;
+
+  get(index: number): Cat;
 }

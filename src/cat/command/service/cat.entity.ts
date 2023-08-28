@@ -8,4 +8,16 @@ export class Cat {
     this.age = age;
     this.breed = breed;
   }
+
+  rename(name: string) {
+    this.name = name;
+  }
+
+  updateAge(age: number) {
+    this.age = age;
+  }
+
+  updateBreed(breed: string) {
+    this.breed = breed;
+  }
 }

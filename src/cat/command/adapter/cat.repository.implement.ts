@@ -16,4 +16,8 @@ export class CatRepositoryImpl implements CatRepository {
   remove(index: number): void {
     CatMapper.removeCat(index);
   }
+
+  get(index: number): Cat {
+    return CatMapper.getCat()[index];
+  }
 }
