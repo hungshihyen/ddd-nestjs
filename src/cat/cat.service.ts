@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CatRepository } from './cat.repository';
-import { CreateCatDto } from '../adapter/create-cat.dto';
-import { UpdateCatDto } from '../adapter/cat-update-dto';
-import { Cat } from '../../entity/cat.entity';
-import { CAT_REPOSITORY } from '../../cat.di-tokens';
+import { CreateCatDto } from './create-cat.dto';
+import { UpdateCatDto } from './cat-update-dto';
+import { Cat } from './cat.entity';
+import { CAT_REPOSITORY } from './cat.di-tokens';
 
 // command: "nest g service cat" to create a service
 

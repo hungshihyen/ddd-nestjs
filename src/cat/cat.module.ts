@@ -1,11 +1,10 @@
 import { Module, Provider } from '@nestjs/common';
-import { CatRepositoryImpl } from './command/adapter/cat.repository.implement';
-import { CatController as GetCatController } from './query/adapter/cat.controller';
-import { CatController as CreateCatController } from './command/adapter/cat.controller';
-import { CatService } from './command/service/cat.service';
+import { CatRepositoryImpl } from './cat.repository.implement';
+import { CatController } from './cat.controller';
+import { CatService } from './cat.service';
 import { CAT_REPOSITORY } from './cat.di-tokens';
 
-const controllers = [GetCatController, CreateCatController];
+const controllers = [CatController];
 
 const repositories: Provider[] = [
   { provide: CAT_REPOSITORY, useClass: CatRepositoryImpl },
