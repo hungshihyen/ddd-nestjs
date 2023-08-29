@@ -1,8 +1,8 @@
 import { Test } from '@nestjs/testing';
+import CatMapper from '../cat.mapper';
+import { CatModule } from '../cat.module';
+import { Cat } from '../entity/cat.entity';
 import { CatController } from './cat.controller';
-import CatMapper from '../../cat.mapper';
-import { CatModule } from '../../cat.module';
-import { Cat } from '../../entity/cat.entity';
 
 describe('CatController', () => {
   let controller: CatController;
@@ -23,12 +23,10 @@ describe('CatController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should set cat successfully', () => {
-    const cat = { name: 'test', age: 1, breed: 'test' };
+  it('should create cat successfully', () => {
+    controller.create({ name: 'test', age: 1, breed: 'test' });
 
-    controller.create(cat);
-
-    expect(CatMapper.getCat()).toEqual([cat]);
+    expect(CatMapper.getCat()).toEqual([new Cat('test', 1, 'test')]);
   });
 
   it('should update cat successfully', () => {

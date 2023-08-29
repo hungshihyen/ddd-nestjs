@@ -1,6 +1,6 @@
 export class Cat {
-  name: string;
   age: number;
+  name: string;
   breed: string;
 
   constructor(name: string, age: number, breed: string) {
