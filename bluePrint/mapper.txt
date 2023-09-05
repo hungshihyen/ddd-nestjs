@@ -1,0 +1,24 @@
+name: $NAME/${NAME}.mapper
+extension: ts
+
+content:
+
+#set($CAPITALIZED_NAME = $NAME.substring(0,1).toUpperCase() + $NAME.substring(1))
+class ${CAPITALIZED_NAME}Mapper {
+  store = {};
+
+  restore() {
+    this.store = {};
+  }
+}
+
+let instance: ${CAPITALIZED_NAME}Mapper;
+
+export default (() => {
+  if (instance) {
+    return instance;
+  }
+
+  instance = new ${CAPITALIZED_NAME}Mapper();
+  return instance;
+})();

@@ -1,0 +1,13 @@
+name: $NAME/${NAME}.controller
+extension: ts
+
+content:
+
+import { Controller } from '@nestjs/common';
+
+
+@Controller('${NAME}')
+#set($CAPITALIZED_NAME = $NAME.substring(0,1).toUpperCase() + $NAME.substring(1))
+export class ${CAPITALIZED_NAME}Controller {
+  
+}

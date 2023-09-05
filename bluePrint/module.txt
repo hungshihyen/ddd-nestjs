@@ -1,0 +1,21 @@
+name: DDD
+file name: $NAME/${NAME}.module
+extension: ts
+
+
+
+content:
+
+#set($CAPITALIZED_NAME = $NAME.substring(0,1).toUpperCase() + $NAME.substring(1))
+import { Module } from '@nestjs/common';
+import { ${CAPITALIZED_NAME}Controller } from './${NAME}.controller';
+import { ${CAPITALIZED_NAME}Service } from './${NAME}.service';
+
+// { provide: ${NAME.toUpperCase()}_REPOSITORY, useClass: ${CAPITALIZED_NAME}RepositoryImpl }
+
+
+@Module({
+  controllers: [${CAPITALIZED_NAME}Controller],
+  providers: [${CAPITALIZED_NAME}Service],
+})
+export class ${CAPITALIZED_NAME}Module {}

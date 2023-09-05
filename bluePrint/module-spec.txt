@@ -1,0 +1,31 @@
+name: ../test/${NAME}/${NAME}.module.spec
+extension: ts
+
+
+content:
+
+#set($CAPITALIZED_NAME = $NAME.substring(0,1).toUpperCase() + $NAME.substring(1))
+import { Test, TestingModule } from '@nestjs/testing';
+import { ${CAPITALIZED_NAME}Controller } from '../../src/${NAME}/${NAME}.controller';
+import { ${CAPITALIZED_NAME}Module } from '../../src/${NAME}/${NAME}.module';
+import ${CAPITALIZED_NAME}Mapper from '../../src/${NAME}/${NAME}.mapper';
+
+describe('${CAPITALIZED_NAME}Module test', () => {
+  let controller: ${CAPITALIZED_NAME}Controller;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      imports: [${CAPITALIZED_NAME}Module],
+    }).compile();
+
+    controller = module.get<${CAPITALIZED_NAME}Controller>(${CAPITALIZED_NAME}Controller);
+  });
+
+  afterEach(() => {
+    ${CAPITALIZED_NAME}Mapper.restore();
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
