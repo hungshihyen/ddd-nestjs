@@ -1,6 +1,11 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { WalletService } from '../service/wallet.service';
-import { SaveWalletRequest, WalletResponse, WithdrawRequest } from '../dto/dto';
+import { SaveWalletRequest, WalletResponse } from '../dto/dto';
+
+class WithdrawRequest {
+  amount: number;
+  id: number;
+}
 
 @Controller('wallet')
 export class WalletController {

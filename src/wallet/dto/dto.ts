@@ -9,8 +9,6 @@ export class SaveWalletRequest {
   }
 }
 
-export type WithdrawRequest = { amount: number; id: number };
-
 export class WalletDbDto {
   id: number;
   balance: number;
