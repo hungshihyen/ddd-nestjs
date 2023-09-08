@@ -16,7 +16,7 @@ class User {
 
 @Injectable()
 export class UserRepository {
-  mapper: {} = {};
+  mapper = {};
 
   save(user: User) {
     this.mapper[user.userId] = user;
