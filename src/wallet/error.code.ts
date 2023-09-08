@@ -1,4 +1,0 @@
-export const BAD_REQUEST_DATA = 'BAD_REQUEST_DATA';
-export const BAD_REQUEST_FORMAT = 'BAD_REQUEST_FORMAT';
-export const USER_NOT_FOUND = 'USER_NOT_FOUND';
-export const USER_LOCKED = 'USER_LOCKED';
