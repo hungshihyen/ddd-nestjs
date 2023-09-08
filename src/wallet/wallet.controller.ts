@@ -11,9 +11,15 @@ class User {
 }
 
 class CreateUserService {
-  create2(userId: number, mapper: {}) {
+  private mapper: {};
+
+  constructor(mapper: {}) {
+    this.mapper = mapper;
+  }
+
+  create(userId: number) {
     const user = new User(userId, 0);
-    mapper[userId] = user;
+    this.mapper[userId] = user;
   }
 }
 
@@ -23,11 +29,11 @@ export class WalletController {
   private createUserService: CreateUserService;
 
   constructor() {
-    this.createUserService = new CreateUserService();
+    this.createUserService = new CreateUserService(this.mapper);
   }
 
   create(userId: number) {
-    this.createUserService.create2(userId, this.mapper);
+    this.createUserService.create(userId);
   }
 
   save(userId: number, amount: number) {
