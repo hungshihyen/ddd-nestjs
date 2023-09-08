@@ -10,13 +10,24 @@ class User {
   }
 }
 
+class CreateUserService {
+  create2(userId: number, mapper: {}) {
+    const user = new User(userId, 0);
+    mapper[userId] = user;
+  }
+}
+
 @Controller('wallet')
 export class WalletController {
   private mapper = {};
+  private createUserService: CreateUserService;
+
+  constructor() {
+    this.createUserService = new CreateUserService();
+  }
 
   create(userId: number) {
-    const user = new User(userId, 0);
-    this.mapper[userId] = user;
+    this.createUserService.create2(userId, this.mapper);
   }
 
   save(userId: number, amount: number) {
