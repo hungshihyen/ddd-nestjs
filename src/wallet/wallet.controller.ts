@@ -37,17 +37,11 @@ class CreateUserService {
   }
 }
 
-@Controller('wallet')
-export class WalletController {
-  private mapper = {};
-  private createUserService: CreateUserService;
+class SaveService {
+  mapper: {};
 
-  constructor() {
-    this.createUserService = new CreateUserService(this.mapper);
-  }
-
-  create(userId: number) {
-    this.createUserService.create(userId);
+  constructor(mapper: {}) {
+    this.mapper = mapper;
   }
 
   save(userId: number, amount: number) {
@@ -55,6 +49,26 @@ export class WalletController {
     user.amount += amount;
 
     this.mapper[userId] = user;
+  }
+}
+
+@Controller('wallet')
+export class WalletController {
+  private mapper = {};
+  private createUserService: CreateUserService;
+  private saveService: SaveService;
+
+  constructor() {
+    this.createUserService = new CreateUserService(this.mapper);
+    this.saveService = new SaveService(this.mapper);
+  }
+
+  create(userId: number) {
+    this.createUserService.create(userId);
+  }
+
+  save(userId: number, amount: number) {
+    this.saveService.save(userId, amount);
   }
 
   getBalance(userId: number): any {
