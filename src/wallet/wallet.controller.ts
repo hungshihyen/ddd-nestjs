@@ -1,17 +1,17 @@
 import { Controller } from '@nestjs/common';
-import { WalletService } from './wallet.service';
-import { BAD_REQUEST_DATA, BAD_REQUEST_FORMAT } from './error.code';
 import { SaveMoneyRequest } from './dtos';
+import { BAD_REQUEST_DATA, BAD_REQUEST_FORMAT } from './error.code';
+import { WalletService } from './wallet.service';
 
 @Controller('wallet')
 export class WalletController {
-  constructor(private readonly walletService: WalletService) {}
+  constructor(private service: WalletService) {}
 
   get(id: number): number {
-    return this.walletService.get(id);
+    return this.service.get(id);
   }
 
-  save(request: SaveMoneyRequest) {
+  save(request: SaveMoneyRequest): void {
     if (typeof request.amount !== 'number') {
       throw new Error(BAD_REQUEST_FORMAT);
     }
@@ -20,6 +20,6 @@ export class WalletController {
       throw new Error(BAD_REQUEST_DATA);
     }
 
-    this.walletService.save(request);
+    this.service.save(request);
   }
 }

@@ -1,4 +1,4 @@
-import { User } from './user.entity';
+import { User } from './wallet.service';
 
 export interface UserRepository {
   find(id: number): User;
@@ -11,5 +11,3 @@ export class UserRepositoryImpl implements UserRepository {
     return this.store[id];
   }
 }
-
-export const USER_REPOSITORY_TOKEN = 'USER_REPOSITORY';
