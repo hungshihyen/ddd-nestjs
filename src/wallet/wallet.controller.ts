@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Inject, Injectable } from '@nestjs/common';
 
 class User {
   userId: number;
@@ -8,8 +8,13 @@ class User {
     this.amount = amount;
     this.userId = userId;
   }
+
+  addAmount(amount: number) {
+    this.amount += amount;
+  }
 }
 
+@Injectable()
 export class UserRepository {
   mapper: {} = {};
 
@@ -18,7 +23,12 @@ export class UserRepository {
   }
 
   find(userId: number): User {
-    return this.mapper[userId];
+    const user = this.mapper[userId];
+    if (user === undefined) {
+      throw new Error('USER_NOT_FOUND');
+    }
+
+    return user;
   }
 
   create(user: User) {
@@ -26,10 +36,13 @@ export class UserRepository {
   }
 }
 
-class CreateUserService {
+export const token = 'USER_REPOSI';
+
+@Injectable()
+export class CreateUserService {
   private userRepository: UserRepository;
 
-  constructor(userRepository: UserRepository) {
+  constructor(@Inject(token) userRepository: UserRepository) {
     this.userRepository = userRepository;
   }
 
@@ -39,7 +52,7 @@ class CreateUserService {
   }
 }
 
-class SaveService {
+export class SaveService {
   private userRepository: UserRepository;
 
   constructor(userRepository: UserRepository) {
@@ -49,13 +62,13 @@ class SaveService {
   save(userId: number, amount: number) {
     const user = this.userRepository.find(userId);
 
-    user.amount += amount;
+    user.addAmount(amount);
 
     this.userRepository.save(user);
   }
 }
 
-class GetBalanceService {
+export class GetBalanceService {
   private userRepository: UserRepository;
 
   constructor(userRepository: UserRepository) {
@@ -69,15 +82,18 @@ class GetBalanceService {
 
 @Controller('wallet')
 export class WalletController {
-  private mapper = {};
   private createUserService: CreateUserService;
   private saveService: SaveService;
   private getBalanceService: GetBalanceService;
 
-  constructor(userRepository: UserRepository) {
-    this.createUserService = new CreateUserService(userRepository);
-    this.saveService = new SaveService(userRepository);
-    this.getBalanceService = new GetBalanceService(userRepository);
+  constructor(
+    createUserService: CreateUserService,
+    saveService: SaveService,
+    getBalanceService: GetBalanceService,
+  ) {
+    this.createUserService = createUserService;
+    this.saveService = saveService;
+    this.getBalanceService = getBalanceService;
   }
 
   create(userId: number) {

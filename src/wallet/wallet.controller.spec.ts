@@ -1,16 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserRepository, WalletController } from './wallet.controller';
+import {
+  CreateUserService,
+  GetBalanceService,
+  SaveService,
+  UserRepository,
+  WalletController
+} from "./wallet.controller";
 
 describe('WalletController', () => {
   let controller: WalletController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [WalletController],
-      providers: [UserRepository],
-    }).compile();
-
-    controller = module.get<WalletController>(WalletController);
+    const userRepository = new UserRepository();
+    controller = new WalletController(
+      new CreateUserService(userRepository),
+      new SaveService(userRepository),
+      new GetBalanceService(userRepository,
+    );
   });
 
   it('should be defined', () => {
@@ -46,5 +51,9 @@ describe('WalletController', () => {
 
     expect(controller.getBalance(1)).toBe(100);
     expect(controller.getBalance(2)).toBe(200);
+  });
+
+  it("user not found", () => {
+    expect(() => controller.getBalance(1)).toThrowError("USER_NOT_FOUND");
   });
 });
