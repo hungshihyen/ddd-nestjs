@@ -17,6 +17,10 @@ class UserRepository {
     this.mapper = mapper;
   }
 
+  save(user: User) {
+    this.mapper[user.userId] = user;
+  }
+
   find(userId: number): User {
     return this.mapper[userId];
   }
@@ -55,7 +59,7 @@ class SaveService {
 
     user.amount += amount;
 
-    this.mapper[userId] = user;
+    this.userRepository.save(user);
   }
 }
 
