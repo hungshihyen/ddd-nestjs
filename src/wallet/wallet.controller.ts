@@ -59,15 +59,29 @@ class SaveService {
   }
 }
 
+class GetBalanceService {
+  private mapper: {};
+
+  constructor(mapper: {}) {
+    this.mapper = mapper;
+  }
+
+  get(userId: number): any {
+    return this.mapper[userId].amount;
+  }
+}
+
 @Controller('wallet')
 export class WalletController {
   private mapper = {};
   private createUserService: CreateUserService;
   private saveService: SaveService;
+  private getBalanceService: GetBalanceService;
 
   constructor() {
     this.createUserService = new CreateUserService(this.mapper);
     this.saveService = new SaveService(this.mapper);
+    this.getBalanceService = new GetBalanceService(this.mapper);
   }
 
   create(userId: number) {
@@ -79,6 +93,6 @@ export class WalletController {
   }
 
   getBalance(userId: number): any {
-    return this.mapper[userId].amount;
+    return this.getBalanceService.get(userId);
   }
 }
