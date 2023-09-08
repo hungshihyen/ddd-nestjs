@@ -17,6 +17,10 @@ class UserRepository {
     this.mapper = mapper;
   }
 
+  find(userId: number): User {
+    return this.mapper[userId];
+  }
+
   create(user: User) {
     this.mapper[user.userId] = user;
   }
@@ -39,13 +43,16 @@ class CreateUserService {
 
 class SaveService {
   mapper: {};
+  private userRepository: UserRepository;
 
   constructor(mapper: {}) {
     this.mapper = mapper;
+    this.userRepository = new UserRepository(this.mapper);
   }
 
   save(userId: number, amount: number) {
-    const user = this.mapper[userId];
+    const user = this.userRepository.find(userId);
+
     user.amount += amount;
 
     this.mapper[userId] = user;
