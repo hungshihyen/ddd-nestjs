@@ -10,7 +10,7 @@ class User {
   }
 }
 
-class UserRepository {
+export class UserRepository {
   mapper: {} = {};
 
   save(user: User) {
@@ -74,8 +74,7 @@ export class WalletController {
   private saveService: SaveService;
   private getBalanceService: GetBalanceService;
 
-  constructor() {
-    const userRepository = new UserRepository();
+  constructor(userRepository: UserRepository) {
     this.createUserService = new CreateUserService(userRepository);
     this.saveService = new SaveService(userRepository);
     this.getBalanceService = new GetBalanceService(userRepository);
