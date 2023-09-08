@@ -60,11 +60,9 @@ class SaveService {
 }
 
 class GetBalanceService {
-  private mapper: {};
   private userRepository: UserRepository;
 
   constructor(mapper: {}) {
-    this.mapper = mapper;
     this.userRepository = new UserRepository(mapper);
   }
 
