@@ -31,12 +31,10 @@ class UserRepository {
 }
 
 class CreateUserService {
-  private mapper: {};
   private userRepository: UserRepository;
 
   constructor(mapper: {}) {
-    this.mapper = mapper;
-    this.userRepository = new UserRepository(this.mapper);
+    this.userRepository = new UserRepository(mapper);
   }
 
   create(userId: number) {
@@ -46,12 +44,10 @@ class CreateUserService {
 }
 
 class SaveService {
-  mapper: {};
   private userRepository: UserRepository;
 
   constructor(mapper: {}) {
-    this.mapper = mapper;
-    this.userRepository = new UserRepository(this.mapper);
+    this.userRepository = new UserRepository(mapper);
   }
 
   save(userId: number, amount: number) {
