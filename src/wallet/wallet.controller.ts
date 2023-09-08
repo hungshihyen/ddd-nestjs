@@ -33,8 +33,8 @@ class UserRepository {
 class CreateUserService {
   private userRepository: UserRepository;
 
-  constructor(mapper: {}) {
-    this.userRepository = new UserRepository(mapper);
+  constructor(userRepository: UserRepository) {
+    this.userRepository = userRepository;
   }
 
   create(userId: number) {
@@ -46,8 +46,8 @@ class CreateUserService {
 class SaveService {
   private userRepository: UserRepository;
 
-  constructor(mapper: {}) {
-    this.userRepository = new UserRepository(mapper);
+  constructor(userRepository: UserRepository) {
+    this.userRepository = userRepository;
   }
 
   save(userId: number, amount: number) {
@@ -62,8 +62,8 @@ class SaveService {
 class GetBalanceService {
   private userRepository: UserRepository;
 
-  constructor(mapper: {}) {
-    this.userRepository = new UserRepository(mapper);
+  constructor(userRepository: UserRepository) {
+    this.userRepository = userRepository;
   }
 
   get(userId: number): any {
@@ -79,9 +79,13 @@ export class WalletController {
   private getBalanceService: GetBalanceService;
 
   constructor() {
-    this.createUserService = new CreateUserService(this.mapper);
-    this.saveService = new SaveService(this.mapper);
-    this.getBalanceService = new GetBalanceService(this.mapper);
+    this.createUserService = new CreateUserService(
+      new UserRepository(this.mapper),
+    );
+    this.saveService = new SaveService(new UserRepository(this.mapper));
+    this.getBalanceService = new GetBalanceService(
+      new UserRepository(this.mapper),
+    );
   }
 
   create(userId: number) {
