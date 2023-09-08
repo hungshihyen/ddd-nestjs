@@ -10,16 +10,30 @@ class User {
   }
 }
 
-class CreateUserService {
-  private mapper: {};
+class UserRepository {
+  mapper: {};
 
   constructor(mapper: {}) {
     this.mapper = mapper;
   }
 
+  create(user: User) {
+    this.mapper[user.userId] = user;
+  }
+}
+
+class CreateUserService {
+  private mapper: {};
+  private userRepository: UserRepository;
+
+  constructor(mapper: {}) {
+    this.mapper = mapper;
+    this.userRepository = new UserRepository(this.mapper);
+  }
+
   create(userId: number) {
     const user = new User(userId, 0);
-    this.mapper[userId] = user;
+    this.userRepository.create(user);
   }
 }
 
